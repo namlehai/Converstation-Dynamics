@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 
+#------------------------------------------------------------------------------+
+#
+#
+#   Word Embedding/ANN -- Abortion sentiment analysis
+#   2018-June.
+#   Main Contributors:
+#   1. Nam Le -- University College Dublin
+#   2. 
+#   3. 
+#
+#------------------------------------------------------------------------------+
+
 #------ Processing the labels of the raw IMDB data --------+
 import os
 
@@ -10,8 +22,8 @@ import os
 #sys.setdefaultencoding("utf-8")
 #sys.setdefaultencoding('utf8')
 
-imdb_dir = 'abortion'
-train_dir = os.path.join(imdb_dir, 'train1')
+abortion_dir = 'abortion'
+train_dir = os.path.join(abortion_dir, 'train1')
 
 labels = []
 texts = []
@@ -64,7 +76,7 @@ validation_samples = 10183
 # considers only the top 10000 words in the dataset
 max_words = 20000
 
-tokenizer = Tokenizer()#(num_words=max_words)
+tokenizer = Tokenizer(num_words=max_words)
 tokenizer.fit_on_texts(texts)
 sequences = tokenizer.texts_to_sequences(texts)
 
