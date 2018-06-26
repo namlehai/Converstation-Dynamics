@@ -23,7 +23,7 @@ import os
 #sys.setdefaultencoding('utf8')
 
 abortion_dir = 'abortion'
-train_dir = os.path.join(abortion_dir, 'train1')
+train_dir = os.path.join(abortion_dir, 'train2')
 
 labels = []
 texts = []
@@ -58,10 +58,10 @@ np.random.seed(1)
 maxlen = 200
 
 # trains on 10000 samples
-training_samples = 10000
+training_samples = 70000
 
 # validates on 10000 samples
-validation_samples = 10183
+validation_samples = 22300
 
 # considers only the top 10000 words in the dataset
 max_words = 10000
@@ -112,14 +112,15 @@ from keras.layers import Embedding, Flatten, Dense, Dropout
 model = Sequential()
 model.add(Embedding(max_words, embedding_dim, input_length=maxlen))
 model.add(Flatten())
-model.add(Dense(200, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(200, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dense(32, activation='relu'))
+#model.add(Dropout(0.5))
+#model.add(Dense(200, activation='relu'))
+#model.add(Dropout(0.5))
 model.add(Dense(1, activation='sigmoid'))
+#model.add(Dense(1, activation='softmax'))
 model.summary()
 
-model.compile(optimizer='adam',
+model.compile(optimizer='rmsprop',
               loss='binary_crossentropy',
               metrics=['acc'])
 
